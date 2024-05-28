@@ -15,7 +15,6 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import NumberInput from "../NumberInput/NumberInput";
 import styles from "./CalculationForm.module.css";
-import { useEffect } from "react";
 
 const initialValues = {
   sex: null,
@@ -33,16 +32,13 @@ const initialValues = {
   },
 };
 
-const CalculationForm = ({ handleResults }) => {
+const CalculationForm = ({ handleFormData }) => {
   const formik = useFormik({
     validationSchema: schema,
-    onSubmit: handleResults,
+    onSubmit: handleFormData,
     initialValues,
   });
 
-  useEffect(() => {
-    console.log(formik.errors);
-  }, [formik.errors]);
   return (
     <form className={styles.Form} onSubmit={formik.handleSubmit}>
       <h2>Preencha o formulário para realizar os cálculos</h2>

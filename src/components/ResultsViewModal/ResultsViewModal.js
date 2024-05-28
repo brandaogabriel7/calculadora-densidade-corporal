@@ -1,9 +1,7 @@
 import { Box, Modal, Typography } from "@mui/material";
 
 const ResultsView = ({ results, showResults, handleCloseResults }) => {
-  console.log(results, showResults, handleCloseResults);
-  const resultsDisplay = { ...results };
-  resultsDisplay.birthDate = new Date(results?.birthDate?.$d);
+  const { bodyDensity, fatPercentage, fatMass, fatFreeMass } = results;
   return (
     <Modal open={showResults} onClose={handleCloseResults}>
       <Box
@@ -16,10 +14,13 @@ const ResultsView = ({ results, showResults, handleCloseResults }) => {
       >
         <Typography variant="h2">Resultados</Typography>
         <p>
-          Densidade corporal: <br />
-          Percentual de gordura: <br />
-          Massa gorda: <br />
-          Massa isenta de gordura:
+          Densidade corporal: {bodyDensity.toFixed(3)}
+          <br />
+          Percentual de gordura: {fatPercentage.toFixed(3)}
+          <br />
+          Massa gorda: {fatMass.toFixed(3)}
+          <br />
+          Massa isenta de gordura: {fatFreeMass.toFixed(3)}
         </p>
       </Box>
     </Modal>

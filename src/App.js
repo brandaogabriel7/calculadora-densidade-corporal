@@ -2,13 +2,14 @@ import CalculationForm from "./components/CalculationForm/CalculationForm";
 import "./index.css";
 import { useState } from "react";
 import ResultsViewModal from "./components/ResultsViewModal/ResultsViewModal";
+import calculate from "./services/calculator";
 
 function App() {
   const [showResults, setShowResults] = useState(false);
   const [results, setResults] = useState({});
 
-  const handleResults = (results) => {
-    setResults(results);
+  const handleFormData = (formData) => {
+    setResults(calculate(formData));
     setShowResults(true);
   };
 
@@ -19,7 +20,7 @@ function App() {
   return (
     <>
       <h1>Calculadora de densidade corporal</h1>
-      <CalculationForm handleResults={handleResults} />
+      <CalculationForm handleFormData={handleFormData} />
       <ResultsViewModal
         results={results}
         showResults={showResults}
