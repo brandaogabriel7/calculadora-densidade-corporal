@@ -4,6 +4,7 @@ import {
   Button,
   FormControl,
   FormControlLabel,
+  FormHelperText,
   FormLabel,
   Radio,
   RadioGroup,
@@ -13,6 +14,7 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import NumberInput from "../NumberInput/NumberInput";
 import styles from "./CalculationForm.module.css";
+import { useEffect } from "react";
 
 const initialValues = {
   sex: null,
@@ -36,6 +38,10 @@ const CalculationForm = ({ handleResults }) => {
     onSubmit: handleResults,
     initialValues,
   });
+
+  useEffect(() => {
+    console.log(formik.errors);
+  }, [formik.errors]);
   return (
     <form className={styles.Form} onSubmit={formik.handleSubmit}>
       <h2>Preencha o formulário para realizar os cálculos</h2>
@@ -59,16 +65,24 @@ const CalculationForm = ({ handleResults }) => {
               label="Masculino"
             />
           </RadioGroup>
+          {formik.touched.sex && formik.errors.sex ? (
+            <FormHelperText error>{formik.errors.sex}</FormHelperText>
+          ) : null}
         </FormControl>
         <Stack spacing={2} direction="row">
-          <DatePicker
-            label="Data de nascimento"
-            name="birthDate"
-            format="DD/MM/YYYY"
-            value={formik.values.birthDate}
-            onChange={(value) => formik.setFieldValue("birthDate", value)}
-            disableFuture
-          />
+          <FormControl>
+            <DatePicker
+              label="Data de nascimento"
+              name="birthDate"
+              format="DD/MM/YYYY"
+              value={formik.values.birthDate}
+              onChange={(value) => formik.setFieldValue("birthDate", value)}
+              disableFuture
+            />
+            {formik.touched.birthDate && formik.errors.birthDate ? (
+              <FormHelperText error>{formik.errors.birthDate}</FormHelperText>
+            ) : null}
+          </FormControl>
           <NumberInput
             name="bodyMass"
             label="Massa corporal"

@@ -5,6 +5,8 @@ import {
   OutlinedInput,
   FormHelperText,
 } from "@mui/material";
+import { camelCase } from "../../utils/stringUtils";
+import { get } from "lodash";
 
 const NumberInput = ({ name, label, unit, formik }) => (
   <FormControl
@@ -13,18 +15,17 @@ const NumberInput = ({ name, label, unit, formik }) => (
   >
     <InputLabel htmlFor={name}>{label}</InputLabel>
     <OutlinedInput
-      id={name}
       endAdornment={<InputAdornment position="end">{unit}</InputAdornment>}
-      aria-describedby={`${name}-helper-text`}
+      aria-describedby={`${camelCase(name)}-helper-text`}
       inputProps={{
-        "aria-label": name,
+        "aria-label": camelCase(name),
         name: name,
         type: "number",
         ...formik.getFieldProps(name),
       }}
     />
-    {formik.touched[name] && formik.errors[name] ? (
-      <FormHelperText error>{formik.errors[name]}</FormHelperText>
+    {get(formik.touched, name) && get(formik.errors, name) ? (
+      <FormHelperText error>{get(formik.errors, name)}</FormHelperText>
     ) : null}
   </FormControl>
 );
