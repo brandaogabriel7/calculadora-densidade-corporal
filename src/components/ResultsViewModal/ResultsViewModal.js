@@ -7,12 +7,12 @@ const ResultsView = ({ results, showResults, handleCloseResults }) => {
       <Box
         sx={{
           backgroundColor: "white",
-          margin: "2em auto",
+          margin: "30vh auto",
           width: "50%",
           padding: "20px",
         }}
       >
-        <Typography variant="h2">Resultados</Typography>
+        <Typography variant="h5">Resultados</Typography>
         <p>
           Densidade corporal: {bodyDensity?.toFixed(3)}
           <br />
