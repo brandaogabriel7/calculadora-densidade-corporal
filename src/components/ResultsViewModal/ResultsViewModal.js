@@ -14,13 +14,13 @@ const ResultsView = ({ results, showResults, handleCloseResults }) => {
       >
         <Typography variant="h2">Resultados</Typography>
         <p>
-          Densidade corporal: {bodyDensity.toFixed(3)}
+          Densidade corporal: {bodyDensity?.toFixed(3)}
           <br />
-          Percentual de gordura: {fatPercentage.toFixed(3)}
+          Percentual de gordura: {fatPercentage?.toFixed(3)}
           <br />
-          Massa gorda: {fatMass.toFixed(3)}
+          Massa gorda: {fatMass?.toFixed(3)}
           <br />
-          Massa isenta de gordura: {fatFreeMass.toFixed(3)}
+          Massa isenta de gordura: {fatFreeMass?.toFixed(3)}
         </p>
       </Box>
     </Modal>
