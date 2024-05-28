@@ -7,15 +7,20 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ptBR } from "@mui/x-date-pickers/locales";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 dayjs.locale("pt-br");
+
+const theme = createTheme({});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <LocalizationProvider locale={ptBR} dateAdapter={AdapterDayjs}>
-      <App />
-    </LocalizationProvider>
+    <ThemeProvider theme={theme}>
+      <LocalizationProvider locale={ptBR} dateAdapter={AdapterDayjs}>
+        <App />
+      </LocalizationProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

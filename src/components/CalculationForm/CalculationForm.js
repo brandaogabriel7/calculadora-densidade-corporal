@@ -11,10 +11,12 @@ import {
   RadioGroup,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import NumberInput from "../NumberInput/NumberInput";
 import styles from "./CalculationForm.module.css";
+import { useTheme } from "@emotion/react";
 
 const initialValues = {
   sex: null,
@@ -33,6 +35,9 @@ const initialValues = {
 };
 
 const CalculationForm = ({ handleFormData }) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const formik = useFormik({
     validationSchema: schema,
     onSubmit: handleFormData,
@@ -66,7 +71,7 @@ const CalculationForm = ({ handleFormData }) => {
             <FormHelperText error>{formik.errors.sex}</FormHelperText>
           ) : null}
         </FormControl>
-        <Stack spacing={2} direction="row">
+        <Stack spacing={2} direction={isSmallScreen ? "column" : "row"}>
           <FormControl>
             <DatePicker
               label="Data de nascimento"
