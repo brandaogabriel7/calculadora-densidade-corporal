@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import schema from "../../schema/formSchema";
 import {
   Button,
+  Divider,
   FormControl,
   FormControlLabel,
   FormHelperText,
@@ -92,6 +93,7 @@ const CalculationForm = ({ handleResults }) => {
           <NumberInput name="height" label="Altura" unit="m" formik={formik} />
         </Stack>
 
+        <Divider />
         <Typography variant="h6" component="h3">
           Dobras cutâneas
         </Typography>
