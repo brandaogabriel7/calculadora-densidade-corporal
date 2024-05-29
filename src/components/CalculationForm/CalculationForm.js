@@ -17,6 +17,7 @@ import { DatePicker } from "@mui/x-date-pickers";
 import NumberInput from "../NumberInput/NumberInput";
 import styles from "./CalculationForm.module.css";
 import { useTheme } from "@emotion/react";
+import { FEMALE, MALE } from "../../sex";
 
 const initialValues = {
   sex: null,
@@ -57,15 +58,11 @@ const CalculationForm = ({ handleFormData }) => {
             row
           >
             <FormControlLabel
-              value="Feminino"
+              value={FEMALE}
               control={<Radio />}
-              label="Feminino"
+              label={FEMALE}
             />
-            <FormControlLabel
-              value="Masculino"
-              control={<Radio />}
-              label="Masculino"
-            />
+            <FormControlLabel value={MALE} control={<Radio />} label={MALE} />
           </RadioGroup>
           {formik.touched.sex && formik.errors.sex ? (
             <FormHelperText error>{formik.errors.sex}</FormHelperText>

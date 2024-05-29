@@ -1,9 +1,10 @@
+import { FEMALE, MALE } from "../sex";
 import calculate from "./calculator";
 
 it.each([
   [
     {
-      sex: "Masculino",
+      sex: MALE,
       birthDate: { $d: new Date("1986-09-15") },
       bodyMass: 78,
       height: 1.79,
@@ -26,7 +27,7 @@ it.each([
   ],
   [
     {
-      sex: "Masculino",
+      sex: MALE,
       birthDate: { $d: new Date("2003-04-20") },
       bodyMass: 65,
       height: 1.69,
@@ -49,7 +50,7 @@ it.each([
   ],
   [
     {
-      sex: "Feminino",
+      sex: FEMALE,
       birthDate: { $d: new Date("2000-04-20") },
       bodyMass: 70,
       height: 1.69,
@@ -72,7 +73,7 @@ it.each([
   ],
   [
     {
-      sex: "Feminino",
+      sex: FEMALE,
       birthDate: { $d: new Date("1989-01-12") },
       bodyMass: 80,
       height: 1.7,
